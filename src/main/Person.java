@@ -8,8 +8,7 @@ import java.util.ArrayList;
 public class Person {
     private final String name;
     private double amtPaid;
-
-    private static ArrayList<Person> peopleList = new ArrayList<>();
+    public static ArrayList<Person> people = new ArrayList<>();
 
     public Person(String name, double amtPaid) {
         this.name = name;
