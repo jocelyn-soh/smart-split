@@ -46,7 +46,6 @@ public class Parser {
             totalExpenses += person.getAmtPaid();
         }
         double aveExpense = totalExpenses / SmartSplit.people.size();
-        System.out.println("ave: " + dblToTwoDp(aveExpense));
         return dblToTwoDp(aveExpense);
     }
 
@@ -57,7 +56,6 @@ public class Parser {
         double expensePerPerson = expensePerPerson();
         for (Person person : SmartSplit.people) {
             double amtPaidExtra =  dblToTwoDp(person.getAmtPaid() - expensePerPerson);
-            System.out.println(person + ":"+ amtPaidExtra);
             person.setAmtPaid(amtPaidExtra);
         }
     }
@@ -115,10 +113,8 @@ public class Parser {
         double amt;
         if (size == 2) {
             amt = Math.max(Math.abs(debtor.getAmtPaid()), Math.abs(creditor.getAmtPaid()));
-            System.out.println("max");
         } else {
             amt = Math.min(Math.abs(debtor.getAmtPaid()), Math.abs(creditor.getAmtPaid()));
-            System.out.println("min");
         }
         return dblToTwoDp(amt);
     }
@@ -135,7 +131,6 @@ public class Parser {
         while (unpaidPpl.size() > 1) {
             int firstIdx = 0;
             int lastIdx = unpaidPpl.size() - 1;
-            System.out.println("last idx" + lastIdx);
             Person debtor = unpaidPpl.get(firstIdx);
             Person creditor = unpaidPpl.get(lastIdx);
             double amtToTransfer = amtToTransfer(unpaidPpl.size(), debtor, creditor);
