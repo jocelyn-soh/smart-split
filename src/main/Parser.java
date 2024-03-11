@@ -8,6 +8,10 @@ import java.util.Comparator;
  */
 public class Parser {
 
+    public static double dblToTwoDp (double untruncatedDbl) {
+        return Double.parseDouble(String.format("%.2f", untruncatedDbl));
+    }
+
     /**
      * Parses the commands entered by the user.
      * @param cmd A String
@@ -41,7 +45,9 @@ public class Parser {
         for (Person person : SmartSplit.people) {
             totalExpenses += person.getAmtPaid();
         }
-        return totalExpenses / SmartSplit.people.size();
+        double aveExpense = totalExpenses / SmartSplit.people.size();
+        System.out.println("ave: " + dblToTwoDp(aveExpense));
+        return dblToTwoDp(aveExpense);
     }
 
     /**
@@ -50,7 +56,8 @@ public class Parser {
     public static void subtractExpensePerPerson() {
         double expensePerPerson = expensePerPerson();
         for (Person person : SmartSplit.people) {
-            double amtPaidExtra =  person.getAmtPaid() - expensePerPerson;
+            double amtPaidExtra =  dblToTwoDp(person.getAmtPaid() - expensePerPerson);
+            System.out.println(person + ":"+ amtPaidExtra);
             person.setAmtPaid(amtPaidExtra);
         }
     }
@@ -88,20 +95,32 @@ public class Parser {
      */
     public static ArrayList<Person> updateUnpaidPpl(ArrayList<Person> unpaidPpl, double amtToTransfer, Person debtor,
                                                     Person creditor) {
-        double debtorNewAmt = debtor.getAmtPaid() + amtToTransfer;
-        double creditorNewAmt = creditor.getAmtPaid() - amtToTransfer;
+        double debtorNewAmt = dblToTwoDp(debtor.getAmtPaid() + amtToTransfer);
+        double creditorNewAmt = dblToTwoDp(creditor.getAmtPaid() - amtToTransfer);
 
         if (creditorNewAmt == 0) { // delete creditor as he has no outstanding transactions
             unpaidPpl.remove(unpaidPpl.size() - 1);
         } else { // update the amount paid for the creditor
-            creditor.setAmtPaid(creditor.getAmtPaid() - amtToTransfer);
+            creditor.setAmtPaid(dblToTwoDp(creditor.getAmtPaid() - amtToTransfer));
         }
         if (debtorNewAmt == 0) { // delete debtor as he has no outstanding transactions
             unpaidPpl.remove(0);
         } else { // update the amount paid for the debtor
-            debtor.setAmtPaid(debtor.getAmtPaid() + amtToTransfer);
+            debtor.setAmtPaid(dblToTwoDp(debtor.getAmtPaid() + amtToTransfer));
         }
         return unpaidPpl;
+    }
+
+    public static double amtToTransfer(int size, Person debtor, Person creditor) {
+        double amt;
+        if (size == 2) {
+            amt = Math.max(Math.abs(debtor.getAmtPaid()), Math.abs(creditor.getAmtPaid()));
+            System.out.println("max");
+        } else {
+            amt = Math.min(Math.abs(debtor.getAmtPaid()), Math.abs(creditor.getAmtPaid()));
+            System.out.println("min");
+        }
+        return dblToTwoDp(amt);
     }
 
     /**
@@ -113,16 +132,16 @@ public class Parser {
         ArrayList<Person> unpaidPpl = createUnpaidArr();
         sortByAmt(unpaidPpl);
         ArrayList<String> transactions = new ArrayList<>();
-        while (!unpaidPpl.isEmpty()) {
+        while (unpaidPpl.size() > 1) {
             int firstIdx = 0;
             int lastIdx = unpaidPpl.size() - 1;
+            System.out.println("last idx" + lastIdx);
             Person debtor = unpaidPpl.get(firstIdx);
             Person creditor = unpaidPpl.get(lastIdx);
-            double amtToTransfer = Math.min(Math.abs(debtor.getAmtPaid()),
-                    Math.abs(creditor.getAmtPaid()));
+            double amtToTransfer = amtToTransfer(unpaidPpl.size(), debtor, creditor);
             transactions.add(debtor + " pays " + creditor + " $" + amtToTransfer);
             unpaidPpl = updateUnpaidPpl(unpaidPpl, amtToTransfer, debtor, creditor);
-            if (!unpaidPpl.isEmpty()) {
+            if (unpaidPpl.size() > 1) {
                 sortByAmt(unpaidPpl);
             } else {
                 break;
