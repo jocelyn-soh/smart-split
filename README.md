@@ -32,15 +32,15 @@ them and set their expense as 0.
 1. Each person will only be added once into SmartSplit. This means if a person made multiple expenses, he/she has to 
 pre-calculate the total expense before adding into SmartSplit.
 2. Due to potential currency conversion (e.g. if friends went on a trip to Australia and made payments using AUD but 
-now that they are back in SG, they want to split the bill in SGD), it is possible for money to be in more than 2 d.p..
-Hence, SmartSplit accepts any number of decimal places as long as the value is within 18 significant figures. 
+now that they are back in Singapore, they want to split the bill in SGD), it is possible for money to be in more than 
+2 d.p.. Hence, SmartSplit accepts any number of decimal places as long as the value is within 18 significant figures. 
 3. All transaction amounts will be truncated to 2 d.p..
 4. If the splitting of the bill is uneven, the person who contributed the least initially will absorb the extra amount. 
 5. If the transaction amount is so insignificant that when truncated becomes $0, then SmartSplit assumes that there will
 be no transaction. In other words, the bill is absorbed by the person who already made the payment.
 6. Users are expected to key in the input with the correct format.
 <br/>
-Note: Any words in <> (e.g. `<EXPENSE>`) below are placeholder text for the parameters to be supplied by the user.
+Note: Any words in <> below are placeholder text for the parameters to be supplied by the user.
 
 ## Adding a friend's expense
 Command: `/add <NAME>: <EXPENSE>`
