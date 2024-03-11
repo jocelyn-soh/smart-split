@@ -23,6 +23,7 @@ public class SmartSplit {
             System.out.println(Ui.breakLines());
             cmd = sc.nextLine();
         }
+        getResponse(cmd);
     }
 
     /**
