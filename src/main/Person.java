@@ -12,6 +12,14 @@ public class Person {
         this.amtPaid = amtPaid;
     }
 
+    public double getAmtPaid() {
+        return this.amtPaid;
+    }
+
+    public void setAmtPaid(double newAmt) {
+        this.amtPaid = newAmt;
+    }
+
     @Override
     public String toString() {
         return name;

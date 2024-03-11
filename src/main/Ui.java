@@ -1,5 +1,7 @@
 package src.main;
 
+import java.util.ArrayList;
+
 public class Ui {
     /**
      * Returns a welcome message.
@@ -26,5 +28,16 @@ public class Ui {
         Person newPerson = new Person(name, amtPaid);
         SmartSplit.people.add(newPerson);
         return "Successfully added " + name + "'s expenses of $" + amtPaid + "!";
+    }
+
+    public static String splitToString() {
+        ArrayList<String> transactions = Parser.parseSplit();
+        StringBuilder sb = new StringBuilder();
+        for (String transaction: transactions) {
+            sb.append(transaction);
+            sb.append(System.lineSeparator());
+        }
+        sb.append("Number of transactions: " + transactions.size());
+        return sb.toString();
     }
 }
