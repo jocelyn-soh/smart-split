@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/smart-split.iml" filepath="$PROJECT_DIR$/.idea/modules/smart-split.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/smart-split.main.iml" filepath="$PROJECT_DIR$/.idea/modules/smart-split.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/smart-split.test.iml" filepath="$PROJECT_DIR$/.idea/modules/smart-split.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smart-split.iml" filepath="$PROJECT_DIR$/.idea/smart-split.iml" />
     </modules>
   </component>
 </project>
