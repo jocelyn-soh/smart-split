@@ -1,4 +1,4 @@
-# Smart-Split
+# Smart Split
 Welcome to Smart Split! This is a simple application that allow users to split their bills with their friends equally
 with the least transactions.
 
@@ -17,11 +17,11 @@ Prerequisites: JDK 11, update IntelliJ to the most recent version.
 6. After that, locate the `src.main/SmartSplit.java` file, right-click it, and choose `Run SmartSplit.java` (if the 
 code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like 
 the below as the output:
-``
+```
 Welcome to SmartSplit!
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
-``
+```
 
 ## Quick Start
 1. Once the program is running, add all persons involved with their names and expenses. Even if they have not made any expenses, please still add
@@ -40,29 +40,32 @@ Hence, SmartSplit accepts any number of decimal places as long as the value is w
 be no transaction. In other words, the bill is absorbed by the person who already made the payment.
 6. Users are expected to key in the input with the correct format.
 <br/>
-Note: Any words in <> (e.g. `<DESCRIPTION>`) below are placeholder text for the parameters to be supplied by the user.
+Note: Any words in <> (e.g. `<EXPENSE>`) below are placeholder text for the parameters to be supplied by the user.
 
 ## Adding a friend's expense
 Command: `/add <NAME>: <EXPENSE>`
+<br>
 Note: <EXPENSE> should be entered without any dollar sign, just the value. 
-<br/>
+<br>
 Example:`/add Bob: 4.375`
+<br>
 Expected output: `Successfully added B's expenses of $4.375!`
 
 ## Splitting the bill 
 Command: '/split'
-<br/>
+<br>
 Example: `split`
+<br>
 Expected output: 
-``
+```
 Carol pays Anna $2.81
 Bob pays Anna $1.82
 Number of transactions: 2
-``
+```
 
 ## Tests
 | Class |Method to be Tested | Scenario | Expected Output | Pass / Fail |
-|----|----|----|----|
+|----|----|----|----| ---- |
 | Parser | parseAdd | `parseAdd("/add Anna: 5.34")` | ["Anna", "5.34"] | Pass |
 | Parser | expensePerPerson | Anna: $5.398, Bob: $10 | 7.69 | Pass |
 | Ui | addToString | `addToString("/add Anna: 5.34")` | Successfully added Anna's expenses of $5.34! | Pass |
