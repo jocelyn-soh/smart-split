@@ -1,5 +1,6 @@
 package src.main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -7,6 +8,7 @@ import java.util.Scanner;
  */
 public class SmartSplit {
 
+    public static ArrayList<Person> people = new ArrayList<>();
 
     /**
      * Runs the program.

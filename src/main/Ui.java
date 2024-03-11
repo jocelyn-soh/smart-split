@@ -24,7 +24,7 @@ public class Ui {
         String name = nameAndAmt[0].strip();
         double amtPaid = Double.parseDouble(nameAndAmt[1].strip());
         Person newPerson = new Person(name, amtPaid);
-        Person.people.add(newPerson);
+        SmartSplit.people.add(newPerson);
         return "Successfully added " + name + "'s expenses of $" + amtPaid + "!";
     }
 }
